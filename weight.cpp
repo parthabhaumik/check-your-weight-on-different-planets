@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <limits>
 using namespace std;
 int main(){ 
     double weight;
@@ -20,6 +21,13 @@ cout<<fixed<<setprecision(2);
 do{
   cout<<YELLOW<<"1.Mercury | 2.Venus | 3.Earth | 4.Mars | 5.Jupiter | 6.Saturn | 7.Uranus | 8.Neptune | 9.Exit "<<RESET<<endl;
 cin>>choice;
+if(cin.fail()){  
+    cin.clear(); 
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+    cout << RED << "Please enter an integer." << RESET << endl;
+    continue; 
+}
+
 if(choice == 9){
 cout<<CYAN<<"Goodbye Astronaut! See you in Space."<<RESET<<endl;
 break;
